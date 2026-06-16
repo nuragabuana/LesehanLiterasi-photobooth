@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#1a8fb8" />
+  <title>Nuragabuana Photo Booth</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="topbar card">
+      <div class="brand-wrap">
+        <img src="assets/logo.png" alt="Logo Nuragabuana" class="brand-logo" />
+        <div>
+          <p class="eyebrow">Photobooth Project</p>
+          <h1>Nuragabuana Story Booth</h1>
+          <p class="subtle">Frame clean 3 foto, siap dipakai dan di-upload ke GitHub Pages.</p>
+        </div>
+      </div>
+      <a class="ig-chip" href="https://www.instagram.com/nuragabuana/" target="_blank" rel="noreferrer noopener">@nuragabuana</a>
+    </section>
+
+    <section class="workspace">
+      <section class="card panel camera-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Langkah 1</p>
+            <h2>Ambil 3 Foto</h2>
+          </div>
+          <span class="status-pill" id="statusPill">Kamera belum aktif</span>
+        </div>
+
+        <div class="camera-stage" id="cameraStage">
+          <video id="camera" autoplay muted playsinline></video>
+          <div class="camera-placeholder" id="cameraPlaceholder">
+            <img src="assets/logo.png" alt="" />
+            <strong>Aktifkan kamera dulu</strong>
+            <span>Klik tombol “Nyalakan Kamera”. Jalankan melalui localhost atau HTTPS.</span>
+          </div>
+          <div class="camera-mask"></div>
+          <div class="countdown" id="countdown"></div>
+        </div>
+
+        <div class="controls-grid">
+          <label class="field">
+            Kamera
+            <select id="cameraMode">
+              <option value="user" selected>Depan</option>
+              <option value="environment">Belakang</option>
+            </select>
+          </label>
+          <label class="field">
+            Countdown
+            <select id="countdownMode">
+              <option value="3" selected>3 detik</option>
+              <option value="2">2 detik</option>
+              <option value="1">1 detik</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="button-row">
+          <button class="btn btn-secondary" type="button" id="startCamera">Nyalakan Kamera</button>
+          <button class="btn btn-primary" type="button" id="takePhotos" disabled>Ambil 3 Foto</button>
+          <button class="btn btn-ghost" type="button" id="resetPhotos" disabled>Reset</button>
+        </div>
+
+        <p class="helper" id="cameraStatus">Tips: gunakan Chrome/Edge di HP atau laptop, dan izinkan akses kamera.</p>
+
+        <div class="shot-strip" id="shotStrip">
+          <div class="shot-thumb is-empty"><span>Foto 1</span></div>
+          <div class="shot-thumb is-empty"><span>Foto 2</span></div>
+          <div class="shot-thumb is-empty"><span>Foto 3</span></div>
+        </div>
+      </section>
+
+      <section class="card panel result-panel">
+        <div class="panel-head">
+          <div>
+            <p class="eyebrow">Langkah 2</p>
+            <h2>Preview Hasil</h2>
+          </div>
+          <span class="format-pill">1080 × 1920</span>
+        </div>
+
+        <div class="result-wrap">
+          <canvas id="resultCanvas" width="1080" height="1920" aria-label="Preview hasil photo booth"></canvas>
+        </div>
+
+        <div class="button-row result-actions">
+          <button class="btn btn-primary" type="button" id="downloadResult" disabled>Download PNG</button>
+          <button class="btn btn-secondary" type="button" id="shareStory" disabled>Upload / Share Story</button>
+          <button class="btn btn-ghost" type="button" id="openInstagram">Buka IG</button>
+        </div>
+
+        <div class="notice">
+          <strong>Catatan:</strong> tombol share tidak bisa auto-post langsung ke akun Instagram. Browser hanya bisa membuka menu share bawaan perangkat. Setelah itu, pilih Instagram Story lalu tag <b>@nuragabuana</b>.
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
